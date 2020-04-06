@@ -1,7 +1,7 @@
 {
   "name": "react-covid19",
   "version": "0.1.0",
-  "homepage": "https://ereicba89.github.io/react-covid",
+  "homepage": "https://ereicba89.github.io/react-covid/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.9",
