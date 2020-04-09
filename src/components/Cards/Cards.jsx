@@ -25,10 +25,10 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                 duration={2.5}
                 separator=','></CountUp>
             </Typography>
+            <br></br>
             <Typography color='textSecondary' gutterBottom>
               {new Date(lastUpdate).toLocaleDateString('ES-es')}
             </Typography>
-            <Typography variant='body2'>Numero de casos activos</Typography>
           </CardContent>
         </Grid>
 
@@ -49,10 +49,10 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                 duration={2.5}
                 separator=','></CountUp>
             </Typography>
+            <br></br>
             <Typography color='textSecondary' gutterBottom>
               {new Date(lastUpdate).toLocaleDateString('ES-es')}
             </Typography>
-            <Typography variant='body2'>Numero de recuperados</Typography>
           </CardContent>
         </Grid>
 
@@ -73,10 +73,10 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                 duration={2.5}
                 separator=','></CountUp>
             </Typography>
+            <br></br>
             <Typography color='textSecondary' gutterBottom>
               {new Date(lastUpdate).toLocaleDateString('ES-es')}
             </Typography>
-            <Typography variant='body2'>Numero de muertes</Typography>
           </CardContent>
         </Grid>
       </Grid>

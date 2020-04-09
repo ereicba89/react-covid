@@ -25,7 +25,6 @@ class App extends React.Component {
 
   render() {
     const { data, country } = this.state
-
     return (
       <div className={styles.container}>
         <img className={styles.image} src={image} alt="covid-19"></img>

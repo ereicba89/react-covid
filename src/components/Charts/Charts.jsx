@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { fetchDailyData } from '../../api'
 import { Line, Bar } from 'react-chartjs-2'
+import Chart from 'react-apexcharts'
+import moment from 'moment'
 
 import styles from './Charts.module.scss'
 
@@ -16,26 +18,40 @@ const Charts = ({ data: { confirmed, recovered, deaths }, country }) => {
   }, [])
 
   const lineChart = dailyData.length ? (
-    <Line
-      data={{
-        labels: dailyData.map(({ date }) => date),
-        datasets: [
-          {
-            data: dailyData.map(({ confirmed }) => confirmed),
-            label: 'Infectados',
-            borderColor: '#3333ff',
-            backgroundColor: 'rgba(0,0,255,0.5)',
-            fill: true,
+    <Chart
+      series={[
+        {
+          name: 'Infectados',
+          data: dailyData.map(({ confirmed }) => confirmed),
+        },
+        {
+          name: 'Muertes',
+          data: dailyData.map(({ deaths }) => deaths),
+        },
+      ]}
+      options={{
+        legend: {
+          show: true,
+        },
+        colors: ['#3333ff', 'red'],
+        chart: {
+          toolbar: {
+            show: true,
           },
-          {
-            data: dailyData.map(({ deaths }) => deaths),
-            label: 'Muertes',
-            borderColor: 'red',
-            backgroundColor: 'rgba(255,0, 0,0.5)',
-            fill: true,
+          id: 'area',
+        },
+        xaxis: {
+          labels: {
+            trim: false,
           },
-        ],
-      }}></Line>
+          categories: dailyData.map(({ date }) =>
+            moment(date).format('MMMM Do YYYY')
+          ),
+        },
+      }}
+      type='area'
+      width='800px'
+    />
   ) : null
 
   const barChart = confirmed ? (
